@@ -65,6 +65,11 @@ XDG::IconLookup::IconLookup()
 XDG::IconLookup *XDG::IconLookup::instance()
 {
     static IconLookup *instance_ = nullptr;
+    QString iconTheme = QString::fromLocal8Bit(qgetenv("ALBERT_ICON_THEME"));
+    if (QIcon::themeName() == "") {
+        QIcon::setThemeName(iconTheme);
+        qWarning() << "Unable to detect systems icon theme. Pulling from $ALBERT_ICON_THEME:" << QIcon::themeName();
+    }
     if (!instance_){
         qInfo() << "Systems icon theme is:" << QIcon::themeName();
         instance_ = new IconLookup();
