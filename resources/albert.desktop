@@ -2,7 +2,8 @@
 [Desktop Entry]
 Categories=Utility;
 Comment=A desktop agnostic launcher
-Exec=albert
+#Exec=albert
+Exec=env ALBERT_ICON_THEME="Os-Catalina-icons" /usr/local/bin/albert
 GenericName=Launcher
 Icon=albert
 Name=Albert
